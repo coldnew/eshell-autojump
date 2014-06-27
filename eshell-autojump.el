@@ -1,4 +1,4 @@
-;;; eshell-autojump.el -- autojump command for Eshell
+;;; eshell-autojump.el --- autojump command for Eshell
 ;; Copyright 2013  Alex Schroeder
 
 ;; This program is free software: you can redistribute it and/or modify it
