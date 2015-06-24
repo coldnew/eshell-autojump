@@ -50,11 +50,11 @@ Ignore non-directories."
   (let ((map (make-hash-table :test 'equal)))
     (when (file-exists-p eshell-autojump-file)
       (dolist (element (with-temp-buffer
-			 (insert-file eshell-autojump-file)
-			 (goto-char (point-min))
-			 (read (current-buffer))))
-	(when (file-directory-p (car element))
-	  (puthash (car element) (cdr element) map))))
+                         (insert-file eshell-autojump-file)
+                         (goto-char (point-min))
+                         (read (current-buffer))))
+        (when (file-directory-p (car element))
+          (puthash (car element) (cdr element) map))))
     (setq eshell-autojump-map map)))
 
 (add-hook 'kill-emacs-hook 'eshell-autojump-save)
@@ -67,21 +67,21 @@ after not being used in a hundred sessions."
   (when (and eshell-autojump-file eshell-autojump-map)
     (with-temp-buffer
       (let ((standard-output (current-buffer)))
-	(insert "(")
-	(maphash (lambda (key value)
-		   (when (> value 0)
-		     (insert "(")
-		     (prin1 key)
-		     (insert " . ")
-		     (prin1 (- value 0.01))
-		     (insert ")\n")))
-		 eshell-autojump-map)
-	  (delete-char -1); eat newline
-	  (insert ")"))
+        (insert "(")
+        (maphash (lambda (key value)
+                   (when (> value 0)
+                     (insert "(")
+                     (prin1 key)
+                     (insert " . ")
+                     (prin1 (- value 0.01))
+                     (insert ")\n")))
+                 eshell-autojump-map)
+        (delete-char -1); eat newline
+        (insert ")"))
       (write-file eshell-autojump-file))))
 
 (add-hook 'eshell-directory-change-hook
-	  'eshell-autojump-record)
+          'eshell-autojump-record)
 
 (defun eshell-autojump-record ()
   "Record the current directory.
@@ -89,9 +89,9 @@ after not being used in a hundred sessions."
   (unless eshell-autojump-map
     (eshell-autojump-load))
   (let ((curdir default-directory))
-  (if (gethash curdir eshell-autojump-map)
-      (puthash curdir (1+ (gethash curdir eshell-autojump-map)) eshell-autojump-map)
-    (puthash curdir 1 eshell-autojump-map))))
+    (if (gethash curdir eshell-autojump-map)
+        (puthash curdir (1+ (gethash curdir eshell-autojump-map)) eshell-autojump-map)
+      (puthash curdir 1 eshell-autojump-map))))
 
 (defun eshell-autojump-candidates ()
   "Return the most popular directories.
@@ -100,11 +100,11 @@ Return list of keys sorted by value, descending, from `eshell-autojump-map'."
     (eshell-autojump-load))
   (let (keys)
     (maphash (lambda (key value)
-	       (setq keys (cons key keys)))
-	     eshell-autojump-map)
+               (setq keys (cons key keys)))
+             eshell-autojump-map)
     (sort keys (lambda (a b)
-		 (> (gethash a eshell-autojump-map)
-		    (gethash b eshell-autojump-map))))))
+                 (> (gethash a eshell-autojump-map)
+                    (gethash b eshell-autojump-map))))))
 
 (defun eshell/j (&rest args)           ; all but first ignored
   "Jump to a directory you often cd to.
@@ -114,23 +114,23 @@ With a positive integer argument, list the n most common directories.
 Otherwise, call `eshell/cd' with the result."
   (setq args (eshell-flatten-list args))
   (let ((path (car args))
-	(candidates (eshell-autojump-candidates))
-	(case-fold-search (eshell-under-windows-p))
-	result)
+        (candidates (eshell-autojump-candidates))
+        (case-fold-search (eshell-under-windows-p))
+        result)
     (when (not path)
       (setq path 10))
     (if (and (integerp path) (> path 0))
-	(progn
-	  (let ((n (nthcdr (1- path) candidates)))
-	    (when n
-	      (setcdr n nil)))
-	  (eshell-lisp-command (mapconcat 'identity candidates "\n")))
+        (progn
+          (let ((n (nthcdr (1- path) candidates)))
+            (when n
+              (setcdr n nil)))
+          (eshell-lisp-command (mapconcat 'identity candidates "\n")))
       (while (and candidates (not result))
-	(if (string-match path (car candidates))
-	    (setq result (car candidates))
-	  (setq candidates (cdr candidates))))
+        (if (string-match path (car candidates))
+            (setq result (car candidates))
+          (setq candidates (cdr candidates))))
       (eshell/cd result))))
 
 (provide 'eshell-autojump)
-    
+
 ;;; eshell-autojump.el ends here
