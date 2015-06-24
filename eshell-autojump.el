@@ -1,5 +1,13 @@
 ;;; eshell-autojump.el --- autojump command for Eshell
-;; Copyright 2013  Alex Schroeder
+;;
+;; Copyright (C) 2013 Alex Schroeder
+;;
+;; Maintainer: Yen-Chin, Lee <coldnew.tw@gmail.com>
+
+;; Author: Alex Schroeder
+;; Kyewords: converience, eshell
+;; Version: 0.2
+;; X-URL: http://github.com/coldnew/eshell-autojump
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the Free
