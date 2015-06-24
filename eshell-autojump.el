@@ -76,9 +76,10 @@ after not being used in a hundred sessions."
 `curdir' is set by `eshell/cd'."
   (unless eshell-autojump-map
     (eshell-autojump-load))
+  (let ((curdir default-directory))
   (if (gethash curdir eshell-autojump-map)
       (puthash curdir (1+ (gethash curdir eshell-autojump-map)) eshell-autojump-map)
-    (puthash curdir 1 eshell-autojump-map)))
+    (puthash curdir 1 eshell-autojump-map))))
 
 (defun eshell-autojump-candidates ()
   "Return the most popular directories.
