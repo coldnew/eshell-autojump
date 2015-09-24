@@ -2,7 +2,7 @@
 *autojump command for Eshell*
 
 ---
-[![License GPL3](https://img.shields.io/badge/license-GPL_3-green.svg?dummy)](http://www.gnu.org/licenses/gpl-3.0.html)
+[![License GPLv3](https://img.shields.io/badge/license-GPL_v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 [![MELPA](http://melpa.org/packages/eshell-autojump-badge.svg)](http://melpa.org/#/eshell-autojump)
 [![MELPA Stable](http://stable.melpa.org/packages/eshell-autojump-badge.svg)](http://stable.melpa.org/#/eshell-autojump)
 
@@ -14,13 +14,13 @@ Use the command j to list common directories and to jump to them.
 
 #### `(eshell-autojump-load)`
 
-Read the initial value of ‘eshell-autojump-map’ from ‘eshell-autojump-file’.
+Read the initial value of `eshell-autojump-map` from `eshell-autojump-file`.
 The file format is a simple alist.
 Ignore non-directories.
 
 #### `(eshell-autojump-save)`
 
-Save the value of ‘eshell-autojump-map’ to ‘eshell-autojump-file’.
+Save the value of `eshell-autojump-map` to `eshell-autojump-file`.
 The file format is a simple alist.
 Reduce values by 1% such that eventually unused items fall off the list
 after not being used in a hundred sessions.
@@ -28,12 +28,12 @@ after not being used in a hundred sessions.
 #### `(eshell-autojump-record)`
 
 Record the current directory.
-‘curdir’ is set by ‘eshell/cd’.
+`curdir` is set by `eshell/cd`.
 
 #### `(eshell-autojump-candidates)`
 
 Return the most popular directories.
-Return list of keys sorted by value, descending, from ‘eshell-autojump-map’.
+Return list of keys sorted by value, descending, from `eshell-autojump-map`.
 
 #### `(eshell/j &rest ARGS)`
 
@@ -41,7 +41,7 @@ Jump to a directory you often cd to.
 This compares the argument with the list of directories you usually jump to.
 Without an argument, list the ten most common directories.
 With a positive integer argument, list the n most common directories.
-Otherwise, call ‘eshell/cd’ with the result.
+Otherwise, call `eshell/cd` with the result.
 
 -----
 <div style="padding-top:15px;color: #d0d0d0;">
