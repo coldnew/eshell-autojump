@@ -32,6 +32,7 @@
 ;;; Code:
 
 (require 'eshell)
+(require 'em-dirs)
 
 (defcustom eshell-autojump-file
   (expand-file-name "autojump" eshell-directory-name)
@@ -49,7 +50,7 @@ Ignore non-directories."
   (let ((map (make-hash-table :test 'equal)))
     (when (file-exists-p eshell-autojump-file)
       (dolist (element (with-temp-buffer
-                         (insert-file eshell-autojump-file)
+                         (insert-file-contents eshell-autojump-file)
                          (goto-char (point-min))
                          (read (current-buffer))))
         (when (file-directory-p (car element))
