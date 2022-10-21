@@ -8,6 +8,7 @@
 ;; Kyewords: converience, eshell
 ;; Version: 0.2
 ;; X-URL: http://github.com/coldnew/eshell-autojump
+;; URL: http://github.com/coldnew/eshell-autojump
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the Free
@@ -23,9 +24,6 @@
 ;; with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
-;; [![MELPA](http://melpa.org/packages/eshell-autojump-badge.svg)](http://melpa.org/#/eshell-autojump)
-;; [![MELPA Stable](http://stable.melpa.org/packages/eshell-autojump-badge.svg)](http://stable.melpa.org/#/eshell-autojump)
-
 
 ;; Use the command j to list common directories and to jump to them.
 

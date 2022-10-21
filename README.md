@@ -1,3 +1,4 @@
+<a href="http://github.com/coldnew/eshell-autojump"><img src="https://www.gnu.org/software/emacs/images/emacs.png" alt="Emacs Logo" width="80" height="80" align="right"></a>
 ## eshell-autojump.el
 *autojump command for Eshell*
 
@@ -6,11 +7,17 @@
 [![MELPA](http://melpa.org/packages/eshell-autojump-badge.svg)](http://melpa.org/#/eshell-autojump)
 [![MELPA Stable](http://stable.melpa.org/packages/eshell-autojump-badge.svg)](http://stable.melpa.org/#/eshell-autojump)
 
-
 Use the command j to list common directories and to jump to them.
 
-### Function Documentation
 
+
+### Customization Documentation
+
+#### `eshell-autojump-file`
+
+The name of the file to read/write the directories for autojumping.
+
+### Function and Macro Documentation
 
 #### `(eshell-autojump-load)`
 
